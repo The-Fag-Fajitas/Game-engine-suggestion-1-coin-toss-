@@ -8,6 +8,8 @@ try:
     n = input("What is your guess?:\n ")
     if type(n) != str:
         raise TypeError("Please write a word")
+    if n not in ["heads", "tails", "Tails", "Heads"]:
+        raise TypeError("Please write the guess properly")
     a = int(input("How rich are you?\n(How many coins can you flip?)\n "))
     # rn is the number of rounds
     for i in range(a):
@@ -18,9 +20,10 @@ try:
             tot += 1
         else:
             tot = tot
-        print(f"Round {i + 1} : {b}\n")
-        print(f"The game has ended. You got a score of {tot}.")
 except ValueError:
     print("Please enter a valid number")
-except float:
+except TypeError:
     print("Please Enter A Word")
+
+print(f"The game has ended. You got a score of {tot}.")
+
