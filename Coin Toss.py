@@ -8,8 +8,6 @@ try:
     n = input("What is your guess?:\n ")
     if type(n) != str:
         raise TypeError("Please write a word")
-    if n != ["heads", "tails", "Heads", "Tails"]:
-        raise TypeError("Please guess what face you'll get")
     a = int(input("How rich are you?\n(How many coins can you flip?)\n "))
     # rn is the number of rounds
     for i in range(a):
