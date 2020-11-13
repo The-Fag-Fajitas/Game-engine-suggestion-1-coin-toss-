@@ -15,63 +15,7 @@ c = 0; n = 0; v = 0   #strings
 
 #now, let's define all our needed functions, or collections of code, here:
 
-def add(tot5):
-    return tot5 + 1
-
-def add_half(tot5):
-    return tot5 + (1 / 2)
-
-def check_exist(l, s, list0):
-    done = False
-    while not done:
-        if l not in list0:
-            s = input("Please, enter something valid:\n ")
-            
-            # Fun
-            if s.lower() == "something valid":
-                s = input("No, really, enter something valid:\n ")
-                if s.lower() == "something valid":
-                    done1 = False
-                    while not done1:
-                        if s.lower() == "something valid":
-                            s = input("No more fun for you!\n ")
-                        elif s.lower() != "something valid":
-                            done1 = True
-                            
-        elif l in list0:
-            done = True
-
-def check_face(v, b, tot5):
-    if v == b:
-        tot5 = add(tot5)
-        return "You guessed the coins's face!\n"
-    elif v != b:
-        return "Too bad.\nYou did not guess the coin's face.\n"
-
-def num_result(l, b, tot5):
-    if l < b:
-        return "You guessed low.\n"
-    elif l > b:
-        return "You guessed high.\n"
-    else:         #or we can say: elif l == b:
-        tot5 = add(tot5)
-        return "You won the round!\n"
-
-def check_result_ball(v, l, tot5):
-    if v == c and l == b:
-        tot5 = add(tot5)
-        return "You won the round!\n"
-    elif v != c or l != b:
-        if v != c and l == b:
-            return "You guessed the number.\n"
-            tot5 = add_half(tot5)
-        elif v == c and l != b:
-            return "You guessed the letter.\nAs for the number,"
-            tot5 = add_half(tot5)
-            result(l, b, tot5)
-        else:   #or do: elif v != c and l != b:
-            return "You did not guess the ball.\n"
-
+## all functions were deleted....
 
 #now, let's start the game...
 
@@ -90,16 +34,39 @@ for i in range(a2):
     n = input("What is your guess?\n ")
     
     v = n.lower()
-    check_exist(v, n, list1)
-    v = n.lower()
-    
+
+    done = False
+    while not done:
+
+        if v not in list1:
+            n = input("Please, enter something valid:\n ")
+            v=n.lower()
+
+            # Fun
+            if v == "something valid":
+                n = input("No, really, enter something valid:\n ")
+                v = n.lower()
+                done1 = False
+                while not done1:
+                    if v == "something valid":
+                        n = input("No more fun for you!\n ")
+                        v = n.lower()
+                    elif v != "something valid":
+                        done1 = True
+                            
+        elif v in list1:
+            done = True
+
     if v == c:
         tot1 += 1
         print("You guessed the coins's face!\n")
     elif v != c:
-        print(f"Too bad:\n   You did not guess the coin's face.\n   It was {c}!\n")
+        print(f"Too bad:\nYou did not guess the coin's face.\nIt was {c}!\n")
 
-print(f"Game one has ended.\nYou got a total score of {tot1} in this game.\n\nGame two: Guess my Secret Number\n" )
+if a2 > 0:
+    print(f"Game one has ended.\nYou got a total score of {tot1} in this game.\n\nGame two: Guess my Secret Number\n" )
+elif a2 == 0:
+    print("Game two: Guess my Secret Number\n")
 
 # Guess my number
 
@@ -119,7 +86,25 @@ for i in range(a2):
         s = input("What is your guess?\n ")
         l = int(s)
         
-        check_exist(l, s, range(1, 101))
+        done = False
+        while not done:
+            if l not in range(1, 101):
+                s = input("Please, enter something valid:\n ")
+                l = int(s)
+                
+                # Fun
+                if s.lower() == "something valid":
+                    s = input("No, really, enter something valid:\n ")
+                    done1 = False
+                    while not done1:
+                        if s.lower() == "something valid":
+                            s = input("No more fun for you!\n ")
+                        elif s.lower() != "something valid":
+                            done1 = True
+                                
+            elif l in range(1, 101):
+                done = True
+
         l = int(s)
         
         if l < b:
@@ -134,7 +119,10 @@ for i in range(a2):
     if l != b:
         print(f"My secret number was {b}.\n")
 
-print(f"Game two has ended.\nYou got a total score of {tot2} in this game.\n\nGame three: Rock, Paper, Scissors\n")
+if a2 > 0:
+    print(f"Game two has ended.\nYou got a total score of {tot2} in this game.\n\nGame three: Rock, Paper, Scissors\n")
+elif a2 == 0:
+    print("Game three: Rock, Paper, Scissors\n")
 
 # Rock, Paper, Scissors
 
@@ -150,8 +138,27 @@ for i in range(a2):
     n = input("Enter is your choice:\n ")
     
     v = n.lower()
-    check_exist(v, n, list2)
-    v = n.lower()
+
+    done = False
+    while not done:
+        if v not in list2:
+            n = input("Please, enter something valid:\n ")
+            v = n.lower()
+            
+            # Fun
+            if v == "something valid":
+                n = input("No, really, enter something valid:\n ")
+                v = n.lower()
+                done1 = False
+                while not done1:
+                    if v == "something valid":
+                        n = input("No more fun for you!\n ")
+                        v = n.lower()
+                    else:
+                        done1 = True
+                            
+        elif v in list2:
+            done = True
     
     done = False
     while not done:
@@ -161,9 +168,27 @@ for i in range(a2):
             n = input("It's a tie! Please, chose again:\n ")
             v = n.lower()
            
-            check_exist(v, n, list2)
-            v = n.lower()
-        
+            done = False
+            while not done:
+                if v not in list2:
+                    n = input("Please, enter something valid:\n ")
+                    v = n.lower()
+                    
+                    # Fun
+                    if v == "something valid":
+                        n = input("No, really, enter something valid:\n ")
+                        v = n.lower()
+                        done1 = False
+                        while not done1:
+                            if v == "something valid":
+                                n = input("No more fun for you!\n ")
+                                v = n.lower()
+                            else:
+                                done1 = True
+                                    
+                elif v in list2:
+                    done = True
+
         elif v != c:
             
             done = True
@@ -180,7 +205,110 @@ for i in range(a2):
                 tot3 += 1
                 print(f"The opponent chose {c}.\nYou won!\n")
 
-print(f"Game three has ended.\nYou got a total score of {tot3} in this minigame.\n\nGame four: Guessing a Ball Permuation")
+if a2 > 0:
+    print(f"Game three has ended.\nYou got a total score of {tot3} in this minigame.\n\nGame four: Guessing a Ball Permuation")
+elif a2 == 0:
+    print("Game four: Guessing a Ball Permutation")
 
 # Ball Permutaion
 
+print("Discription: In this game, we have a specified number of identical urns - by you -\nfrom which we draw a ball wach round.\nThe balls in the urn are noted with a letter (a through c)\nand a number (1 through 5).\nYou have to guess it in three attempts!\n")
+
+a1 = input("How many Urns do you wish us to summon to you?\n ")
+a2 = int(a1)
+
+for i in range(a2):
+    print(f"Round: {i + 1}\n")
+    
+    b = r.choice(list4)   #or do : r.randint(1, 6)
+    c = r.choice(list3)
+    
+    for _ in range(3):
+        
+        print(f"Attempt: {_ + 1}\n")
+        
+        n = input("What is the ball's letter?\n ")
+        v = n.lower()
+        done = False
+        while not done:
+            if v not in list3:
+                n = input("Please, enter something valid:\n ")
+                v = n.lower()
+                
+                # Fun
+                if v == "something valid":
+                    n = input("No, really, enter something valid:\n ")
+                    v = n.lower()
+                    done1 = False
+                    while not done1:
+                        if v == "something valid":
+                            n = input("No more fun for you!\n ")
+                            v = n.lower()
+                        else:
+                            done1 = True
+                                
+            elif v in list3:
+                done = True
+        
+        s = input("What is the ball's number?\n ")
+        l = int(s)
+
+        done = False
+        while not done:
+            if l not in list4:
+                s = input("Please, enter something valid:\n ")
+                l = int(s)
+                
+                # Fun
+                if s.lower() == "something valid":
+                    s = input("No, really, enter something valid:\n ")
+                    done1 = False
+                    while not done1:
+                        if s.lower() == "something valid":
+                            s = input("No more fun for you!\n ")
+                        elif s.lower() != "something valid":
+                            done1 = True
+                                
+            elif l in list4:
+                done = True
+        
+        l = int(s)
+        
+        if v == c and l == b:
+        
+            tot4 += 1
+            print("You guessed the ball!\n")
+            break
+        
+        elif v != c or l != b:
+            
+            if l < b:
+                            
+                print("(You guessed low for the number)\n")
+                        
+            elif l > b:
+                            
+                print("(You guessed high for the number)\n")
+        
+        if v == c and l != b:
+                
+            print("You got the letter right!\n")
+            tot4 += (1 / 2)
+                    
+        elif v != c and l == c:
+                
+            print("You got the number right, but got the letter wrong.\n")
+            tot4 += (1 / 2)
+                
+        elif v != c and l != b:        
+                    
+            print("You did not guess the ball.\n")
+                
+    if v !=c and l !=b:
+        
+        print(f"My ball was \'{b}{c}\'")
+        
+if a2 > 0:
+    print(f"Game four has ended.\nYour total score in this game is {tot4}.\n\nThe Game of Luck has ended.\nYou got a total score of {tot1 + tot2 + tot3 + tot4}.\n\nBe on the look-out for a future update to the game because it will be updated.\nThank you for playing The Game of Luck!")
+elif a2 == 0:
+    print("You did not play the Game of Luck.")
